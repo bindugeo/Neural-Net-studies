@@ -1,0 +1,44 @@
+import numpy as np 
+import matplotlib.pylab as plt
+def plot_function(function, title="sigmoid"):
+    x = np.arange(-7, 7, 0.01)
+    y = function(x)
+    
+    plt.plot(x, y)
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.title(title)
+    plt.show()
+
+def tanh(z):
+    return (2/(1 + np.power(np.exp(-z),2))-1)
+
+def relu(z):
+    return (np.argmax(0,z))
+  
+def sigmoid_derivative(z):
+    return sigmoid(z) * (1 - sigmoid(z))
+
+def relu_derivative(z):
+    z[z<=0] = 0
+    z[z>0] = 1
+    return z
+
+def tanh_derivative(z):
+    return 1 - (np.power(tanh(z), 2))
+
+def compute_derivative(z, function="sigmoid"):
+    if function == "sigmoid":
+        return sigmoid_derivative(z)
+    elif function == "relu":
+        return relu_derivative(z)
+    elif function == "tanh":
+        return tanh_derivative(z)
+
+plot_function(sigmoid, "sigmoid")    
+plot_function(tanh, "tanh")
+#plot_function(relu, "relu")
+
+plot_function(sigmoid_derivative, "sigmoid_derivative")    
+plot_function(tanh_derivative, "tanh_derivative")
+plot_function(relu_derivative, "relu_derivative")
