@@ -1,0 +1,14 @@
+import numpy as np
+import pandas as pd
+import math
+import matplotlib.pyplot as plt 
+import warnings
+%matplotlib inline
+warnings.filterwarnings("ignore")
+p = np.arange(0,1,0.025)
+
+plt.plot(p, -1 * np.log(p))
+
+plt.plot(p, (-1 * np.log(1 - p)) , 'g')
+
+plt.show()
